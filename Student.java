@@ -23,8 +23,7 @@ public class Student {
                  System.out.println("Name : " + rs.getString("name") + ", Age : " + rs.getInt("age") +
                          ", Skill : " + rs.getString("skills")+",ID : " + rs.getInt("id"));
              }
-    	}
-    	
+    	}	
     }
     //to add data
     private static void addData(Connection con) throws SQLException {
@@ -46,10 +45,8 @@ public class Student {
     		ps.setString(3,skills);
     		ps.setInt(4, id);
     		ps.executeUpdate();
-    		System.out.println("Data added sucessfully...");
-    		
+    		System.out.println("Data added sucessfully...");	
     	}
-    	
     }
     //update the data
     private static void updateData(Connection con) throws SQLException {
@@ -83,40 +80,11 @@ public class Student {
 			try(PreparedStatement ps=con.prepareStatement(query)){
 				ps.setInt(1,id);
 				ps.executeUpdate();
-				System.out.println("Data deleted sucessfully...");
-				
+				System.out.println("Data deleted sucessfully...");			
 			}
-		}
-    	
+	}
     }
     public static void main(String[] args) throws SQLException {
-        /*try (Scanner input = new Scanner(System.in)) {
-            student student = new student();
-
-            System.out.println("Choose an operation: \n1. Add Student Data \n2. Delete Student Data");
-            int choice = input.nextInt();
-            input.nextLine(); // Consume newline
-
-            if (choice == 1) {
-                System.out.println("Enter name:");
-                String name = input.nextLine();
-                System.out.println("Enter age:");
-                int age = input.nextInt();
-                input.nextLine(); // Consume newline
-                System.out.println("Enter skills:");
-                String skills = input.nextLine();
-                int id=input.nextInt();
-                student.executeUpdate("INSERT INTO sms.smsystem(name, age, skills,id) VALUES (?, ?, ?,?)", name, age, skills,id);
-                System.out.println("Data inserted successfully!");
-            } else if (choice == 2) {
-                System.out.println("Enter the name of the student to delete:");
-                String name = input.nextLine();
-                int rows = student.executeUpdate("DELETE FROM sms.smsystem WHERE name = ?", name);
-                System.out.println(rows > 0 ? "Data deleted successfully!" : "No data found for the given name.");
-            } else {
-                System.out.println("Invalid choice.");
-            }
-        }*/
     	
     	try(Connection con=getConnection();
 				Scanner input = new Scanner(System.in)){
@@ -136,13 +104,10 @@ public class Student {
     			case 5->{
     				System.out.println("Closeing...");
     				return ;
-    			}default -> System.out.println("choose the correct path!...");
-    			
     			}
-    			
+				default -> System.out.println("choose the correct path!...");
+    			}			
     		}
-    		
     	}
     }
-
 }
